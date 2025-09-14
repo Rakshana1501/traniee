@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Example</title>
+</head>
+<body>
+  <h2>Login Form</h2>
+  <input type="text" id="username" placeholder="Enter Username">
+  <input type="password" id="password" placeholder="Enter Password">
+  <button onclick="login()">Login</button>
+
+  <p id="result"></p>
+
+  <script>
+    // ====== 1. Variables (var, let, const) ======
+    var siteName = "MyApp"; // var → global
+    let loginAttempts = 0;  // let → can be updated
+    const MAX_ATTEMPTS = 3; // const → fixed value
+
+    // ====== 2. Stored User Data (Primitive + Non-Primitive) ======
+    let correctUsername = "rakshana";  // string
+    let correctPassword = "12345";     // string
+    let isLoggedIn = false;            // boolean
+    let userProfile = {                // object
+      name: "Rakshana",
+      age: 22,
+      hobbies: ["coding", "music"]     // array
+    };
+
+    // ====== 3. Login Function ======
+    function login() {
+      // Get values from input fields (always string by default)
+      let enteredUser = document.getElementById("username").value;
+      let enteredPass = document.getElementById("password").value;
+
+      // Type Conversion (to string, though already string, just for demo)
+      enteredUser = String(enteredUser);
+      enteredPass = String(enteredPass);
+
+      // Check login
+      if (enteredUser === correctUsername && enteredPass === correctPassword) {
+        isLoggedIn = Boolean(true); // type conversion to boolean
+        document.getElementById("result").innerText =
+          "✅ Welcome " + userProfile.name + "! You are logged into " + siteName;
+      } else {
+        loginAttempts++;
+        let attemptsLeft = MAX_ATTEMPTS - loginAttempts;
+
+        if (attemptsLeft > 0) {
+          document.getElementById("result").innerText =
+            "❌ Wrong credentials! Attempts left: " + String(attemptsLeft);
+        } else {
+          document.getElementById("result").innerText =
+            "🚫 Account Locked! Too many failed attempts.";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
