@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="greeting">Please Log In</h2>
+
+  <input type="text" id="username" placeholder="Enter username">
+  <input type="password" id="password" placeholder="Enter password">
+  <button onclick="login()">Login</button>
+  <button onclick="logout()">Logout</button>
+
+  <script>
+    // Check if user is already logged in
+    const loggedUser = localStorage.getItem("username");
+    if(loggedUser) {
+      document.getElementById("greeting").innerText = `Welcome back, ${loggedUser}!`;
+    }
+
+    // Login function
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Simple hard-coded credentials for demo
+      if(username === "user1" && password === "12345") {
+        localStorage.setItem("username", username); // Save login
+        document.getElementById("greeting").innerText = `Welcome, ${username}!`;
+        alert("Login Successful ✅");
+      } else {
+        alert("Invalid username or password ❌");
+      }
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("username"); // Remove login
+      document.getElementById("greeting").innerText = "Please Log In";
+      alert("Logged out successfully ✅");
+    }
+  </script>
+</body>
+</html>

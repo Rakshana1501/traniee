@@ -1,0 +1,223 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Local Storage Example</title>
+</head>
+<body>
+  <h2 id="greet">Hello, Guest!</h2>
+
+  <input type="text" id="username" placeholder="Enter your name">
+  <button onclick="saveName()">Save Name</button>
+
+  <script>
+    // Display name from local storage if available
+    const storedName = localStorage.getItem("username");
+    if(storedName) {
+      document.getElementById("greet").innerText = `Hello, ${storedName}!`;
+    }
+
+    // Save name to local storage
+    function saveName() {
+      const name = document.getElementById("username").value;
+      localStorage.setItem("username", name);
+      document.getElementById("greet").innerText = `Hello, ${name}!`;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1️⃣ What is Local Storage?
+
+Local Storage is a way for web pages to store data in the browser.
+
+The data is stored locally on the user’s browser.
+
+It does not disappear when the page is closed (persistent storage).
+
+You can save key-value pairs like username: "Rakshana" or theme: "dark".
+
+🔹 Why use Local Storage?
+
+To remember user preferences (dark mode, language)
+
+To keep login info temporarily (without a backend)
+
+To save shopping cart items in e-commerce websites
+
+To store small data without server requests
+
+✅ It’s fast, simple, and does not require a database
+
+
+
+
+🔹 What happens here:
+
+User types their name and clicks Save Name.
+
+localStorage.setItem("username", name) → saves the name in the browser.
+
+On page load, localStorage.getItem("username") → checks if a name is already saved.
+
+Text on the page updates dynamically with the saved name.
+
+🔹 Real-life relevance:
+
+Remember login details (like “Keep me logged in”)
+
+Remember user-selected theme (light/dark mode)
+
+Shopping cart data in e-commerce apps -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    ul {
+      margin-top: 20px;
+    }
+    li {
+      margin: 5px 0;
+    }
+    .deleteBtn {
+      margin-left: 10px;
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>My To-Do List</h2>
+
+  <input type="text" id="todoInput" placeholder="Enter a task">
+  <button onclick="addTodo()">Add Task</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    // Load saved tasks from local storage
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    const todoList = document.getElementById("todoList");
+
+    // Function to display tasks
+    function displayTodos() {
+      todoList.innerHTML = "";
+      todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        li.innerText = todo;
+
+        // Delete button
+        const deleteBtn = document.createElement("span");
+        deleteBtn.innerText = "❌";
+        deleteBtn.className = "deleteBtn";
+        deleteBtn.onclick = () => deleteTodo(index);
+
+        li.appendChild(deleteBtn);
+        todoList.appendChild(li);
+      });
+    }
+
+    // Add new task
+    function addTodo() {
+      const input = document.getElementById("todoInput");
+      const task = input.value.trim();
+      if(task) {
+        todos.push(task);
+        localStorage.setItem("todos", JSON.stringify(todos)); // save to local storage
+        input.value = "";
+        displayTodos();
+      }
+    }
+
+    // Delete a task
+    function deleteTodo(index) {
+      todos.splice(index, 1);
+      localStorage.setItem("todos", JSON.stringify(todos)); // update local storage
+      displayTodos();
+    }
+
+    // Display tasks on page load
+    displayTodos();
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
